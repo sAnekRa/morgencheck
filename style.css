@@ -1,0 +1,28 @@
+:root { color-scheme: light dark; font-family: system-ui, sans-serif; color: #18352e; background: #f5f7f2; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 36rem; margin: auto; padding: 1.25rem 1rem 2.5rem; }
+h1 { font-size: 2rem; margin: .25rem 0 .8rem; }
+.eyebrow { font-size: .85rem; letter-spacing: .05em; color: #48665c; }
+p { line-height: 1.5; }
+fieldset { border: 0; padding: 0; margin: 1.5rem 0; }
+legend, label[for] { font-weight: 650; margin-bottom: .6rem; display: block; }
+.options { display: flex; flex-wrap: wrap; gap: .5rem; }
+.choice { position: relative; flex: 1 1 auto; }
+.choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.choice span { display: block; min-height: 48px; padding: .8rem; border: 1px solid #8caaa0; border-radius: .65rem; text-align: center; background: #fff; }
+.choice input:checked + span { background: #174f3d; color: #fff; border-color: #174f3d; }
+.choice input:focus-visible + span { outline: 3px solid #d38c13; outline-offset: 2px; }
+.choice.skip span { font-size: .85rem; }
+textarea { display: block; width: 100%; padding: .8rem; margin-bottom: 1rem; border: 1px solid #8caaa0; border-radius: .65rem; font: inherit; background: #fff; color: inherit; }
+button { width: 100%; min-height: 52px; padding: 1rem; border: 0; border-radius: .65rem; background: #174f3d; color: white; font: inherit; font-weight: 650; }
+button:disabled { opacity: .55; }
+.hint, .privacy, label span { font-size: .85rem; font-weight: 400; color: #48665c; }
+#status { font-weight: 600; }
+#detail-block[hidden] { display: none; }
+@media (prefers-color-scheme: dark) {
+ :root { color: #edf4ed; background: #13261f; }
+ .choice span, textarea { background: #203b30; }
+ .hint, .privacy, .eyebrow, label span { color: #b6ccbf; }
+ .choice input:checked + span, button { background: #a9dac0; color: #13261f; }
+}
