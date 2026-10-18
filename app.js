@@ -69,7 +69,7 @@ form.addEventListener('submit', event => {
   }
   // Nothing is persisted in browser storage or sent to analytics/HTTP APIs.
   requestId ||= crypto.randomUUID();
-  const payload = JSON.stringify({schema: 1, request_id: requestId, day, base_revision: revision, answers});
+  const payload = JSON.stringify({schema: 1, mode, request_id: requestId, day, base_revision: revision, answers});
   if (new TextEncoder().encode(payload).length > 4096) {
     status.textContent = 'Die Eingabe ist zu lang (maximal 4096 UTF-8-Bytes). Bitte kürzen.'; return;
   }
