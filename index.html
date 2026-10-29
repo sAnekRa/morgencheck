@@ -6,9 +6,9 @@
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://telegram.org; style-src 'self'; connect-src 'none'; img-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Morgencheck</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
-<script src="app.js" defer></script>
+<script src="app.js?v=2" defer></script>
 </head>
 <body>
 <main>
@@ -18,9 +18,38 @@
 <p id="revision"></p>
 <form id="checkin">
 <div id="fields"></div>
-<div id="detail-block" hidden>
+<div id="stress-block" data-after="stress" class="branch" hidden>
+<p id="time-hint" hidden>Dein verfügbares Zeitfenster kannst du unten bei «Trainingsmöglichkeit» angeben.</p>
+</div>
+<div id="known-block" data-after="complaints" class="branch" hidden>
+<label for="known_location">Wo sind die bekannten Beschwerden? (freiwillig)</label>
+<input id="known_location" name="known_location" type="text" maxlength="100">
+</div>
+<div id="detail-block" data-after="complaints" class="branch" hidden>
 <label for="complaint_detail">Wo und was ist neu oder schlechter?</label>
 <textarea id="complaint_detail" maxlength="300" rows="3"></textarea>
+</div>
+<div id="illness-block" data-after="complaints" class="branch" hidden>
+<label for="illness_kind">Welche Symptome? (freiwillig)</label>
+<input id="illness_kind" name="illness_kind" type="text" maxlength="100">
+<label for="illness_since">Seit wann? (freiwillig)</label>
+<input id="illness_since" name="illness_since" type="text" maxlength="100">
+</div>
+<div id="soreness-block" data-after="soreness" class="branch" hidden>
+<label for="soreness_region">Muskelregion (freiwillig)</label>
+<input id="soreness_region" name="soreness_region" type="text" maxlength="100">
+<label for="soreness_movement">Betroffene Bewegung (freiwillig)</label>
+<input id="soreness_movement" name="soreness_movement" type="text" maxlength="100">
+</div>
+<div id="minutes-block" data-after="training" class="branch" hidden>
+<label for="minutes">Verfügbares Zeitfenster in Minuten (freiwillig)</label>
+<input id="minutes" name="minutes" type="number" inputmode="numeric" min="1" max="1440" step="1">
+</div>
+<div id="shift-block" data-after="training" class="branch" hidden>
+<div id="shift-date-block" hidden>
+<label for="shift_day">Gewünschter Tag (freiwillig)</label>
+<input id="shift_day" name="shift_day" type="date">
+</div>
 </div>
 <label for="note">Notiz <span>(freiwillig)</span></label>
 <textarea id="note" maxlength="600" rows="3" placeholder="Was du ergänzen möchtest …"></textarea>
@@ -28,7 +57,7 @@
 <button type="submit" id="send" disabled>An Telegram senden</button>
 <p id="status" role="status" aria-live="polite"></p>
 </form>
-<p class="privacy">Deine Antworten werden über Telegram übertragen und privat gespeichert. Erst die Bot-Nachricht bestätigt die Speicherung. Kein Echtzeit- oder Notfallmonitoring, keine automatische Trainingsfreigabe.</p>
+<p class="privacy">Deine Antworten werden über Telegram übertragen und privat gespeichert. Erst die Bot-Nachricht bestätigt die Speicherung. Kein Echtzeit- oder Notfallmonitoring, keine automatische Trainingsfreigabe oder Planänderung. Bei einem akuten Notfall sofort örtliche Notfallhilfe holen, nicht auf eine Coachantwort warten.</p>
 </main>
 </body>
 </html>
